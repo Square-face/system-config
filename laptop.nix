@@ -4,10 +4,10 @@ nixpkgs: name: system: nixpkgs.lib.nixosSystem {
   modules = [
     {
       networking.hostName = name;
+      hardware.graphics.enable = true;
     }
 
     ./hosts/${name}.nix
-    ./hosts/${name}-hardware.nix
 
     ./modules/system/systemd-boot.nix
     ./modules/system/networking.nix
