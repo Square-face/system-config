@@ -1,6 +1,8 @@
-{ lib, ... }: {
+{ lib, pkgs, ... }: let
+  banner = pkgs.writeText "banner" "Tagga fejden";
+in {
   services.openssh = {
     enable = lib.mkDefault true;
-    banner = "Tagga fejden";
+    settings.Banner = "${banner}";
   };
 }

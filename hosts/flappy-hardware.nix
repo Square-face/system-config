@@ -4,9 +4,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
@@ -14,33 +14,35 @@
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "btrfs" ];
 
-  boot.initrd.luks.devices."crypt-lvm".device = "/dev/disk/by-uuid/dd772d4f-60ea-4175-91ca-28d1b4b5f24b";
-  boot.initrd.luks.devices."crypt-lvm".allowDiscards = true;
+  boot.initrd.luks.devices."crypt-lvm" = {
+    device = "/dev/disk/by-uuid/dd772d4f-60ea-4175-91ca-28d1b4b5f24b";
+    allowDiscards = true;
+  };
 
-  fileSystems."/" =
-    { device = "/dev/mapper/vg-primary";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/mapper/vg-primary";
+    fsType = "btrfs";
+    options = [ "subvol=root" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/mapper/vg-primary";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "noatime" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/mapper/vg-primary";
+    fsType = "btrfs";
+    options = [ "subvol=nix" "noatime" ];
+  };
 
-  fileSystems."/var/log" =
-    { device = "/dev/mapper/vg-primary";
-      fsType = "btrfs";
-      options = [ "subvol=log" ];
-      neededForBoot = true;
-    };
+  fileSystems."/var/log" = {
+    device = "/dev/mapper/vg-primary";
+    fsType = "btrfs";
+    options = [ "subvol=log" ];
+    neededForBoot = true;
+  };
 
-  fileSystems."/persist" =
-    { device = "/dev/mapper/vg-primary";
-      fsType = "btrfs";
-      options = [ "subvol=persist" ];
-    };
+  fileSystems."/persist" = {
+    device = "/dev/mapper/vg-primary";
+    fsType = "btrfs";
+    options = [ "subvol=persist" ];
+  };
 
   #fileSystems."/home/sq8" =
   #  { device = "/dev/mapper/vg-primary";
@@ -48,16 +50,15 @@
   #    options = [ "subvol=home/sq8" ];
   #  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C0BD-FB46";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/C0BD-FB46";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   swapDevices = [
     { device = "/dev/mapper/vg-swap"; }
   ];
-
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

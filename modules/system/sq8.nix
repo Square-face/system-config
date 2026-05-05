@@ -18,7 +18,16 @@ in {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "Linus Michelsson";
-    extraGroups = [ "video" ];
+    extraGroups = [
+      "networkmanager"
+      "seat"
+      "render"
+      "video"
+      "audio"
+      "wheel"
+      "kvm"
+      "podman"
+    ];
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOqqHUxxsUbO8rvzowMKuj/mRmp9zIe+yJMU7NNmqxkb linus@sq8.dev cardno:19_628_687"
