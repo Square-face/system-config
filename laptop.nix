@@ -5,6 +5,8 @@ nixpkgs: name: system: nixpkgs.lib.nixosSystem {
     {
       networking.hostName = name;
       hardware.graphics.enable = true;
+      security.pam.services.swaylock= {};
+      hardware.bluetooth.enable = true;
     }
 
     ./hosts/${name}.nix
