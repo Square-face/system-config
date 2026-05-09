@@ -11,6 +11,7 @@ nixpkgs: name: system: nixpkgs.lib.nixosSystem {
 
     ./modules/system/systemd-boot.nix
     ./modules/system/networking.nix
+    ./modules/system/locale.nix
     ./modules/system/nixos.nix
     ./modules/system/nh.nix
     ./modules/system/tlp.nix
