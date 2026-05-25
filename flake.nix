@@ -12,7 +12,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/shrexbox.nix
+          ./hosts/shrexbox/default.nix
           ./modules/system/sq8.nix
 
           ./modules/system/systemd-boot.nix
@@ -39,7 +39,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/flappy.nix
+          ./hosts/flappy/default.nix
           ./modules/system/sq8.nix
 
           ./modules/system/systemd-boot.nix
@@ -60,14 +60,13 @@
           ./modules/programs/man.nix
           ./modules/programs/zsh.nix
         ];
-
       };
 
       frank = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/frank.nix
+          ./hosts/frank/default.nix
           ./modules/system/sq8.nix
 
           ./modules/system/systemd-boot.nix
