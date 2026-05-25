@@ -1,5 +1,5 @@
 { lib, config, ...}: {
-  pipewire.lowLatency = true;
+  pipewire.lowLatency = false;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = "26.05";
