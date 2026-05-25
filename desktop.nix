@@ -27,5 +27,6 @@ nixpkgs: name: system: nixpkgs.lib.nixosSystem {
 
     ./modules/programs/man.nix
     ./modules/programs/zsh.nix
+    ./modules/programs/steam.nix
   ];
 }
