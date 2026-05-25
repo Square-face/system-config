@@ -4,5 +4,6 @@ in {
   services.openssh = {
     enable = lib.mkDefault true;
     settings.Banner = "${banner}";
+    settings.StreamLocalBindUnlink = "yes";
   };
 }
