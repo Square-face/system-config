@@ -4,9 +4,6 @@ nixpkgs: name: system: nixpkgs.lib.nixosSystem {
   modules = [
     {
       networking.hostName = name;
-      hardware.graphics.enable = true;
-      security.pam.services.swaylock= {};
-      hardware.bluetooth.enable = true;
     }
 
     ./hosts/${name}.nix
@@ -17,6 +14,8 @@ nixpkgs: name: system: nixpkgs.lib.nixosSystem {
     ./modules/system/nixos.nix
     ./modules/system/nh.nix
     ./modules/system/tlp.nix
+    ./modules/system/graphics.nix
+    ./modules/system/bluetooth.nix
 
     ./modules/system/sq8.nix
 

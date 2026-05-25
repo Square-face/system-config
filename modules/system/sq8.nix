@@ -12,8 +12,14 @@ in {
       type = lib.types.bool;
       default = true;
     };
+    swaylock = lib.mkOption {
+      description = "Enable swaylock pam service";
+      type = lib.types.bool;
+      default = true;
+    };
   };
 
+  config.security.pam.services.swaylock = lib.mkIf cfg.swaylock {};
   config.users.users.sq8 = lib.mkIf cfg.enabled {
     isNormalUser = true;
     shell = pkgs.zsh;
