@@ -1,7 +1,12 @@
-{...}: {
+{ ... }: {
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
+
+    virtualHosts."sq8.dev" = {
+      locations."/".root = "/var/lib/nginx/www";
+    };
+
     virtualHosts."home.lan" = {
       extraConfig = ''
         allow 10.0.0.0/24;
@@ -15,11 +20,7 @@
       };
     };
 
-    virtualHosts."sq8.dev" = {
-      forceSSL = false;
-      enableACME = false;
-      locations."/".root = "/var/lib/nginx/www";
-    };
+    virtualHosts."git.sq8.dev".extraConfig = "access_log /var/log/nginx/git/access.log;";
 
     gitweb = {
       enable = true;
@@ -27,5 +28,6 @@
       virtualHost = "git.sq8.dev";
     };
   };
+
   services.gitweb.projectroot = "/var/git";
 }
