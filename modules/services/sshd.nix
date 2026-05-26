@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: let
-  banner = pkgs.writeText "banner" "Tagga fejden";
+  banner = pkgs.writeText "banner" "Tagga fejden\n";
 in {
   services.openssh = {
     enable = lib.mkDefault true;

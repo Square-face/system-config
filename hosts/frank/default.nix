@@ -1,33 +1,20 @@
-{ ... }: {
+{ config, lib, ... }: {
+  imports = [
+    ./cloudflared.nix
+    ./nginx.nix
+    ./borg.nix
+    ./networking.nix
+    ./home-assistant.nix
+  ];
   rootbash.color = ''\e[38;5;226m\'';
 
   # System
   system.stateVersion = "25.11";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod" ];
   boot.kernelModules = [ "kvm-intel" ];
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  # Networking
-  networking.hostName = "frank";
-  networking.useDHCP = false;
-  networking.dhcpcd.enable = false;
-  networking.interfaces.br0.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = false;
-
-  networking.bridges.br0.interfaces = ["eno1"];
-
-  networking.interfaces.br0.ipv4 = {
-    addresses = [{
-      address = "192.168.8.10";
-      prefixLength = 24;
-    }];
-  };
-  networking.defaultGateway = {
-    address = "192.168.8.1";
-    interface = "br0";
-  };
-  networking.nameservers = [ "127.0.0.1" ]; # PIhole
 
   # Filesystems
   fileSystems."/" = {
@@ -49,5 +36,18 @@
   swapDevices = [{
     device = "/dev/disk/by-uuid/29bea1d4-e8c6-4487-91cc-ea7efafe70ac";
   }];
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "sv_SE.UTF-8";
+    LC_IDENTIFICATION = "sv_SE.UTF-8";
+    LC_MEASUREMENT = "sv_SE.UTF-8";
+    LC_MONETARY = "sv_SE.UTF-8";
+    LC_NAME = "sv_SE.UTF-8";
+    LC_NUMERIC = "sv_SE.UTF-8";
+    LC_PAPER = "sv_SE.UTF-8";
+    LC_TELEPHONE = "sv_SE.UTF-8";
+    LC_TIME = "sv_SE.UTF-8";
+  };
 }
 

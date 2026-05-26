@@ -70,14 +70,16 @@
           ./modules/system/sq8.nix
 
           ./modules/system/systemd-boot.nix
-          ./modules/system/networking.nix
+          # ./modules/system/networking.nix
           ./modules/system/rootbash.nix
+          ./modules/system/metrics.nix
           ./modules/system/nixos.nix
           ./modules/system/nh.nix
 
           ./modules/services/containers.nix
           ./modules/services/dnsmasq.nix
           ./modules/services/sshd.nix
+          ./modules/services/weechat.nix
 
           ./modules/programs/man.nix
           ./modules/programs/zsh.nix

@@ -1,16 +1,16 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, config, ... }: {
   options.rootbash.enable = lib.mkOption {
     description = "Enable rootbash";
     type = lib.types.bool;
     default = true;
-  }
+  };
   options.rootbash.color = lib.mkOption {
     description = "Color for the shell when running as root";
-    type = lib.types.string;
-  }
+    type = lib.types.str;
+  };
   config = let
-    enabled = options.rootbash.enable;
-    color = options.rootbash.color;
+    enabled = config.rootbash.enable;
+    color = config.rootbash.color;
   in lib.mkIf enabled {
     programs.bash.promptInit = ''
 PS1="\[${color}]\u\[\e[38;5;7m\]@\[${color}]\h \[\e[38;5;33m\]\w \[\033[0m\]$ "
@@ -44,5 +44,5 @@ echo -e "$line0"
 hostname | sed 's/\b./\u&/g' | ${pkgs.figlet}/bin/figlet -c -f slant | ${pkgs.lolcat}/bin/lolcat -t -F 0.3
 echo -e "$line1\n$line2"
     '';
-  }
+  };
 }
