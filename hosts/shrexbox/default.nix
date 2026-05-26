@@ -12,6 +12,7 @@
       prefixLength = 24;
     }];
   };
+  networking.hostName = "shrexbox";
 
   networking.defaultGateway = {
     address = "192.168.8.1";

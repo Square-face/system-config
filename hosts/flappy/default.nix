@@ -9,6 +9,8 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [ "btrfs" ];
 
+  networking.hostName = "flappy";
+
   boot.initrd.luks.devices."crypt-lvm" = {
     device = "/dev/disk/by-uuid/dd772d4f-60ea-4175-91ca-28d1b4b5f24b";
     allowDiscards = true;
