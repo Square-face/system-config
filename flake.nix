@@ -12,26 +12,26 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/shrexbox/default.nix
-          ./modules/system/sq8.nix
+          ./shrexbox/default.nix
+          ./common/system/sq8.nix
 
-          ./modules/system/systemd-boot.nix
-          ./modules/system/networking.nix
-          ./modules/system/bluetooth.nix
-          ./modules/system/graphics.nix
-          ./modules/system/locale.nix
-          ./modules/system/nixos.nix
-          ./modules/system/nh.nix
+          ./common/system/systemd-boot.nix
+          ./common/system/networking.nix
+          ./common/system/bluetooth.nix
+          ./common/system/graphics.nix
+          ./common/system/locale.nix
+          ./common/system/nixos.nix
+          ./common/system/nh.nix
 
-          ./modules/services/containers.nix
-          ./modules/services/pipewire.nix
-          ./modules/services/kerberos.nix
-          ./modules/services/upower.nix
-          ./modules/services/sshd.nix
+          ./common/services/containers.nix
+          ./common/services/pipewire.nix
+          ./common/services/kerberos.nix
+          ./common/services/upower.nix
+          ./common/services/sshd.nix
 
-          ./modules/programs/man.nix
-          ./modules/programs/zsh.nix
-          ./modules/programs/steam.nix
+          ./common/programs/man.nix
+          ./common/programs/zsh.nix
+          ./common/programs/steam.nix
         ];
       };
 
@@ -39,26 +39,26 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/flappy/default.nix
-          ./modules/system/sq8.nix
+          ./flappy/default.nix
+          ./common/system/sq8.nix
 
-          ./modules/system/systemd-boot.nix
-          ./modules/system/networking.nix
-          ./modules/system/bluetooth.nix
-          ./modules/system/graphics.nix
-          ./modules/system/locale.nix
-          ./modules/system/nixos.nix
-          ./modules/system/nh.nix
-          ./modules/system/tlp.nix
+          ./common/system/systemd-boot.nix
+          ./common/system/networking.nix
+          ./common/system/bluetooth.nix
+          ./common/system/graphics.nix
+          ./common/system/locale.nix
+          ./common/system/nixos.nix
+          ./common/system/nh.nix
+          ./common/system/tlp.nix
 
-          ./modules/services/containers.nix
-          ./modules/services/pipewire.nix
-          ./modules/services/kerberos.nix
-          ./modules/services/upower.nix
-          ./modules/services/sshd.nix
+          ./common/services/containers.nix
+          ./common/services/pipewire.nix
+          ./common/services/kerberos.nix
+          ./common/services/upower.nix
+          ./common/services/sshd.nix
 
-          ./modules/programs/man.nix
-          ./modules/programs/zsh.nix
+          ./common/programs/man.nix
+          ./common/programs/zsh.nix
         ];
       };
 
@@ -66,23 +66,22 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/frank/default.nix
-          ./modules/system/sq8.nix
+          ./frank/default.nix
+          ./common/system/sq8.nix
 
-          ./modules/system/systemd-boot.nix
-          # ./modules/system/networking.nix
-          ./modules/system/rootbash.nix
-          ./modules/system/metrics.nix
-          ./modules/system/nixos.nix
-          ./modules/system/nh.nix
+          ./common/system/systemd-boot.nix
+          ./common/system/rootbash.nix
+          ./common/system/metrics.nix
+          ./common/system/nixos.nix
+          ./common/system/nh.nix
 
-          ./modules/services/containers.nix
-          ./modules/services/dnsmasq.nix
-          ./modules/services/sshd.nix
-          ./modules/services/weechat.nix
+          ./common/services/containers.nix
+          ./common/services/dnsmasq.nix
+          ./common/services/sshd.nix
+          ./common/services/weechat.nix
 
-          ./modules/programs/man.nix
-          ./modules/programs/zsh.nix
+          ./common/programs/man.nix
+          ./common/programs/zsh.nix
         ];
       };
     };
