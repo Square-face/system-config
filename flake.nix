@@ -76,7 +76,6 @@
           ./common/system/nh.nix
 
           ./common/services/containers.nix
-          ./common/services/dnsmasq.nix
           ./common/services/sshd.nix
           ./common/services/weechat.nix
 

@@ -5,6 +5,7 @@
     ./borg.nix
     ./networking.nix
     ./home-assistant.nix
+    ./dnsmasq.nix
   ];
   rootbash.color = ''\e[38;5;226m\'';
 
