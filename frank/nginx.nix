@@ -21,13 +21,15 @@
     };
 
     virtualHosts."git.sq8.dev".extraConfig = "access_log /var/log/nginx/git/access.log;";
-
-    gitweb = {
-      enable = true;
-      location = "";
-      virtualHost = "git.sq8.dev";
-    };
   };
 
-  services.gitweb.projectroot = "/var/git";
+  services.cgit.sq8 = {
+    enable = true;
+    user = "sq8";
+    group = "sq8";
+    scanPath = "/var/git/sq8";
+    gitHttpBackend.enable = true;
+    gitHttpBackend.checkExportOkFiles = false;
+    nginx.virtualHost = "git.sq8.dev";
+  };
 }

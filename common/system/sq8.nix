@@ -22,6 +22,7 @@ in {
   config.security.pam.services.swaylock = lib.mkIf cfg.swaylock {};
   config.users.users.sq8 = lib.mkIf cfg.enabled {
     isNormalUser = true;
+    isSystemUser = lib.mkForce false;
     shell = pkgs.zsh;
     description = "Linus Michelsson";
     extraGroups = [
