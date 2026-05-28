@@ -31,5 +31,12 @@
     gitHttpBackend.enable = true;
     gitHttpBackend.checkExportOkFiles = false;
     nginx.virtualHost = "git.sq8.dev";
+    settings = {
+      enable-blame = 1;
+      enable-git-config = 1;
+      enable-commit-graph = 1;
+      clone-url = "http://git.sq8.dev/$CGIT_REPO_URL";
+      readme = ["main:README.md" "main:readme.md" "main:README" "main:readme"];
+    };
   };
 }
