@@ -16,7 +16,6 @@
           ./common/system/sq8.nix
 
           ./common/system/systemd-boot.nix
-          ./common/system/networking.nix
           ./common/system/bluetooth.nix
           ./common/system/graphics.nix
           ./common/system/locale.nix
