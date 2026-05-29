@@ -71,6 +71,7 @@
           ./common/system/systemd-boot.nix
           ./common/system/rootbash.nix
           ./common/system/metrics.nix
+          ./common/system/locale.nix
           ./common/system/nixos.nix
           ./common/system/nh.nix
 
