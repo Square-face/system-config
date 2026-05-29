@@ -35,7 +35,7 @@
       enable-blame = 1;
       enable-git-config = 1;
       enable-commit-graph = 1;
-      clone-url = "http://git.sq8.dev/$CGIT_REPO_URL";
+      clone-url = "https://git.sq8.dev/$CGIT_REPO_URL";
       readme = ["main:README.md" "main:readme.md" "main:README" "main:readme"];
     };
   };
