@@ -51,7 +51,6 @@
           ./common/system/nh.nix
           ./common/system/tlp.nix
 
-          ./common/services/containers.nix
           ./common/services/pipewire.nix
           ./common/services/kerberos.nix
           ./common/services/upower.nix
