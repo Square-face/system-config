@@ -6,82 +6,84 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
   };
 
-  outputs = {nixpkgs-unstable, nixpkgs-stable, ...}: {
-    nixosConfigurations = {
-      shrexbox = nixpkgs-unstable.lib.nixosSystem {
-        system = "x86_64-linux";
+  outputs =
+    { nixpkgs-unstable, nixpkgs-stable, ... }:
+    {
+      nixosConfigurations = {
+        shrexbox = nixpkgs-unstable.lib.nixosSystem {
+          system = "x86_64-linux";
 
-        modules = [
-          ./shrexbox/default.nix
-          ./common/system/sq8.nix
+          modules = [
+            ./shrexbox/default.nix
+            ./common/system/sq8.nix
 
-          ./common/system/systemd-boot.nix
-          ./common/system/bluetooth.nix
-          ./common/system/graphics.nix
-          ./common/system/locale.nix
-          ./common/system/nixos.nix
-          ./common/system/nh.nix
+            ./common/system/systemd-boot.nix
+            ./common/system/bluetooth.nix
+            ./common/system/graphics.nix
+            ./common/system/locale.nix
+            ./common/system/nixos.nix
+            ./common/system/nh.nix
 
-          ./common/services/containers.nix
-          ./common/services/pipewire.nix
-          ./common/services/kerberos.nix
-          ./common/services/upower.nix
-          ./common/services/sshd.nix
+            ./common/services/containers.nix
+            ./common/services/pipewire.nix
+            ./common/services/kerberos.nix
+            ./common/services/upower.nix
+            ./common/services/sshd.nix
 
-          ./common/programs/man.nix
-          ./common/programs/zsh.nix
-          ./common/programs/steam.nix
-        ];
-      };
+            ./common/programs/man.nix
+            ./common/programs/zsh.nix
+            ./common/programs/steam.nix
+          ];
+        };
 
-      flappy = nixpkgs-unstable.lib.nixosSystem {
-        system = "x86_64-linux";
+        flappy = nixpkgs-unstable.lib.nixosSystem {
+          system = "x86_64-linux";
 
-        modules = [
-          ./flappy/default.nix
-          ./common/system/sq8.nix
+          modules = [
+            ./flappy/default.nix
+            ./common/system/sq8.nix
 
-          ./common/system/systemd-boot.nix
-          ./common/system/networking.nix
-          ./common/system/bluetooth.nix
-          ./common/system/graphics.nix
-          ./common/system/locale.nix
-          ./common/system/nixos.nix
-          ./common/system/nh.nix
-          ./common/system/tlp.nix
+            ./common/system/systemd-boot.nix
+            ./common/system/networking.nix
+            ./common/system/bluetooth.nix
+            ./common/system/graphics.nix
+            ./common/system/locale.nix
+            ./common/system/nixos.nix
+            ./common/system/nh.nix
+            ./common/system/tlp.nix
 
-          ./common/services/pipewire.nix
-          ./common/services/kerberos.nix
-          ./common/services/upower.nix
-          ./common/services/sshd.nix
+            ./common/services/pipewire.nix
+            ./common/services/kerberos.nix
+            ./common/services/upower.nix
+            ./common/services/sshd.nix
 
-          ./common/programs/man.nix
-          ./common/programs/zsh.nix
-        ];
-      };
+            ./common/programs/man.nix
+            ./common/programs/zsh.nix
+          ];
+        };
 
-      frank = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
+        frank = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
 
-        modules = [
-          ./frank/default.nix
-          ./common/system/sq8.nix
+          modules = [
+            ./frank/default.nix
+            ./common/system/sq8.nix
 
-          ./common/system/systemd-boot.nix
-          ./common/system/rootbash.nix
-          ./common/system/metrics.nix
-          ./common/system/locale.nix
-          ./common/system/nixos.nix
-          ./common/system/nh.nix
+            ./common/system/systemd-boot.nix
+            ./common/system/rootbash.nix
+            ./common/system/metrics.nix
+            ./common/system/locale.nix
+            ./common/system/nixos.nix
+            ./common/system/nh.nix
 
-          ./common/services/containers.nix
-          ./common/services/sshd.nix
-          ./common/services/weechat.nix
+            ./common/services/containers.nix
+            ./common/services/sshd.nix
+            ./common/services/weechat.nix
 
-          ./common/programs/man.nix
-          ./common/programs/zsh.nix
-        ];
+            ./common/programs/man.nix
+            ./common/programs/zsh.nix
+          ];
+        };
       };
     };
-  };
 }

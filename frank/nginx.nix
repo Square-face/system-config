@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
@@ -37,7 +38,12 @@
       enable-commit-graph = 1;
       clone-url = "https://git.sq8.dev/$CGIT_REPO_URL";
       about-filter = "${pkgs.cgit}/lib/cgit/filters/about-formatting.sh";
-      readme = ["main:README.md" "main:readme.md" "main:README" "main:readme"];
+      readme = [
+        "main:README.md"
+        "main:readme.md"
+        "main:README"
+        "main:readme"
+      ];
     };
   };
 }

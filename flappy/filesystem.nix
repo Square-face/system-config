@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   boot.supportedFilesystems = [ "btrfs" ];
   boot.initrd.luks.devices."crypt-lvm" = {
     device = "/dev/disk/by-uuid/dd772d4f-60ea-4175-91ca-28d1b4b5f24b";
@@ -14,7 +15,10 @@
   fileSystems."/nix" = {
     device = "/dev/mapper/vg-primary";
     fsType = "btrfs";
-    options = [ "subvol=nix" "noatime" ];
+    options = [
+      "subvol=nix"
+      "noatime"
+    ];
   };
 
   fileSystems."/var/log" = {
@@ -33,6 +37,9 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/C0BD-FB46";
     fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 }

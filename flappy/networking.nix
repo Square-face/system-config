@@ -1,3 +1,4 @@
-{ ... }: {
-    networking.hostName = "flappy";
+{ ... }:
+{
+  networking.hostName = "flappy";
 }

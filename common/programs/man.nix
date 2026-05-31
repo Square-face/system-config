@@ -1,6 +1,13 @@
-{pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
   cfg = config.man;
-in {
+in
+{
   options.man = {
     enable = lib.mkOption {
       description = "Enable man pages";
@@ -9,8 +16,11 @@ in {
     };
   };
 
-  config.environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-    man-pages
-    man-pages-posix
-  ]);
+  config.environment.systemPackages = lib.mkIf cfg.enable (
+    with pkgs;
+    [
+      man-pages
+      man-pages-posix
+    ]
+  );
 }

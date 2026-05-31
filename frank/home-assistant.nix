@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.home-assistant = {
     enable = true;
     extraPackages = ps: with ps; [ psycopg2 ];
@@ -21,7 +22,7 @@
       homeassistant = {
         name = "sqHome";
       };
-      default_config = {};
+      default_config = { };
       recorder.db_url = "postgresql://@/hass";
       http = {
         server_host = "::1";
@@ -36,9 +37,11 @@
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "hass" ];
-    ensureUsers = [{
-      name = "hass";
-      ensureDBOwnership = true;
-    }];
+    ensureUsers = [
+      {
+        name = "hass";
+        ensureDBOwnership = true;
+      }
+    ];
   };
 }

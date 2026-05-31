@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   security.krb5.enable = lib.mkDefault true;
   security.krb5.settings = {
     appdefaults = {

@@ -1,4 +1,5 @@
-{ ... }:{
+{ ... }:
+{
 
   boot.initrd.luks.devices."crypt-lvm" = {
     device = "/dev/disk/by-uuid/dd092f65-0230-40e9-ae8e-d9e8e8182423";
@@ -37,6 +38,9 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/1486-F4EA";
     fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 }

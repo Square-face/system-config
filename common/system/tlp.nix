@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   services.tlp.enable = lib.mkDefault true;
   services.tlp.settings = {
     CPU_SCALING_GOVERNOR_ON_AC = "performance";

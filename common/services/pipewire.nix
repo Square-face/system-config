@@ -1,4 +1,5 @@
-{config, lib, ...}: {
+{ config, lib, ... }:
+{
   options.pipewire = {
     lowLatency = lib.mkEnableOption "Enable low latency pipewire profile";
   };
@@ -24,16 +25,18 @@
     };
 
     pipewire-pulse."92-low-latency" = {
-      "context.modules" = [{
-        name = "libpipewire-module-protocol-pulse";
-        args = {
-          "pulse.default.req" = "16/96000";
-          "pulse.min.req" = "16/96000";
-          "pulse.max.req" = "32/96000";
-          "pulse.min.quantum" = "16/96000";
-          "pulse.max.quantum" = "32/96000";
-        };
-      }];
+      "context.modules" = [
+        {
+          name = "libpipewire-module-protocol-pulse";
+          args = {
+            "pulse.default.req" = "16/96000";
+            "pulse.min.req" = "16/96000";
+            "pulse.max.req" = "32/96000";
+            "pulse.min.quantum" = "16/96000";
+            "pulse.max.quantum" = "32/96000";
+          };
+        }
+      ];
       "stream.properties" = {
         "node.latency" = "32/96000";
         "resample.quality" = 1;

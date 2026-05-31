@@ -1,6 +1,13 @@
-{lib, pkgs, config, ...}: let
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+let
   cfg = config.sq8;
-in {
+in
+{
   options.sq8 = {
     enabled = lib.mkOption {
       description = "Enable SQ8's user";
@@ -19,7 +26,7 @@ in {
     };
   };
 
-  config.security.pam.services.swaylock = lib.mkIf cfg.swaylock {};
+  config.security.pam.services.swaylock = lib.mkIf cfg.swaylock { };
   config.users.users.sq8 = lib.mkIf cfg.enabled {
     isNormalUser = true;
     isSystemUser = lib.mkForce false;

@@ -1,4 +1,5 @@
-{ lib, ... }:{
+{ lib, ... }:
+{
   services.dnsmasq = {
     enable = true;
     settings = {
@@ -10,7 +11,11 @@
       # Cache dns queries.
       cache-size = 1000;
       # upstream DNS servers
-      server = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
+      server = [
+        "1.1.1.1"
+        "8.8.8.8"
+        "9.9.9.9"
+      ];
 
       dhcp-range = [ "br0,10.0.0.128,10.0.0.254,24h" ];
       interface = "br0";

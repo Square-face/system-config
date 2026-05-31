@@ -1,3 +1,4 @@
-{lib, ...}:{
-    hardware.graphics.enable = lib.mkDefault true;
+{ lib, ... }:
+{
+  hardware.graphics.enable = lib.mkDefault true;
 }
