@@ -41,6 +41,7 @@ in
       "wheel"
       "kvm"
       "podman"
+      "nginx"
     ];
 
     openssh.authorizedKeys.keys = [

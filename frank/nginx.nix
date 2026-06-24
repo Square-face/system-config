@@ -8,6 +8,10 @@
       locations."/".root = "/var/lib/nginx/www";
     };
 
+    virtualHosts."static.sq8.dev" = {
+      locations."/".root = "/var/lib/nginx/static";
+    };
+
     virtualHosts."home.lan" = {
       extraConfig = ''
         allow 10.0.0.0/24;
