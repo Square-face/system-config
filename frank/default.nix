@@ -7,14 +7,14 @@
 
   imports = [
     ./cloudflared.nix
-    ./nginx.nix
-    ./tayga.nix
+    ./services/nginx.nix
+    ./services/tayga.nix
     ./borg.nix
-    ./unbound.nix
+    ./services/unbound.nix
     ./networking.nix
     ./filesystem.nix
     ./hardware.nix
-    ./home-assistant.nix
-    ./dnsmasq.nix
+    ./services/home-assistant.nix
+    ./services/dnsmasq.nix
   ];
 }
