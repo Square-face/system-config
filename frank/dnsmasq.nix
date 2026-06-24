@@ -3,37 +3,21 @@
   services.dnsmasq = {
     enable = true;
     settings = {
-      # sensible behaviours
-      domain-needed = true;
-      bogus-priv = true;
-      no-resolv = true;
+      port = 0;
 
-      # Cache dns queries.
-      cache-size = 1000;
-      # upstream DNS servers
-      server = [
-        "1.1.1.1"
-        "8.8.8.8"
-        "9.9.9.9"
+      interface = "lan0";
+      
+      # IPv4 and IPv6 DHCP pools
+      dhcp-range = [ 
+        "lan0,10.0.0.128,10.0.0.254,24h" 
+        "fd00:1234:5678::,ra-stateless,ra-names"
       ];
 
-      dhcp-range = [ "br0,10.0.0.128,10.0.0.254,24h" ];
-      interface = "br0";
-      dhcp-host = "10.0.0.1";
-
-      # local domains
-      local = "/lan/";
-      domain = "lan";
-      expand-hosts = true;
-
-      no-hosts = true;
-      address = [
-        "/frank.lan/10.0.0.1"
-        "/home.lan/10.0.0.1"
+      # Tell DHCP clients that the router's IPv4/IPv6 addresses are their DNS servers
+      dhcp-option = [
+        "option:dns-server,10.0.0.1"
+        "option6:dns-server,[fd00:1234:5678::1]"
       ];
     };
   };
-
-  # Disable resolved as it tries to do dnsmasq's job
-  services.resolved.enable = lib.mkForce false;
 }

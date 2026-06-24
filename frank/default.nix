@@ -8,7 +8,9 @@
   imports = [
     ./cloudflared.nix
     ./nginx.nix
+    ./tayga.nix
     ./borg.nix
+    ./unbound.nix
     ./networking.nix
     ./filesystem.nix
     ./hardware.nix

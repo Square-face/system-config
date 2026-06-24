@@ -12,6 +12,7 @@
       extraConfig = ''
         allow 10.0.0.0/24;
         allow 10.2.100.0/24;
+        allow fd00:1234:5678::/64;
         deny all;
         proxy_buffering off;
       '';
