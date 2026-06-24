@@ -1,5 +1,7 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
+  services.sssd.kcm = lib.mkDefault true;
+
   security.krb5.enable = lib.mkDefault true;
   security.krb5.settings = {
     appdefaults = {
@@ -9,6 +11,7 @@
 
     libdefaults = {
       default_realm = "LUDD.LTU.SE";
+      default_ccache_name = lib.mkIf config.services.sssd.kcm "KCM:";
       allow_weak_crypto = true;
       kdc_timesync = "1";
       forwardable = true;
