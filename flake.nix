@@ -17,6 +17,7 @@
             ./shrexbox/default.nix
             ./common/system/sq8.nix
 
+            ./common/system/steering-wheel.nix
             ./common/system/systemd-boot.nix
             ./common/system/bluetooth.nix
             ./common/system/graphics.nix
