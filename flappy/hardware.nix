@@ -7,6 +7,8 @@
   ];
   boot.kernelModules = [ "kvm-amd" ];
 
+  hardware.sensor.iio.enable = true;
+
   hardware.enableRedistributableFirmware = lib.mkDefault true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
