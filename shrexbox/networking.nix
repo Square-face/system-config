@@ -1,6 +1,7 @@
 { ... }:
 {
   networking.hostName = "shrexbox";
+  networking.networkmanager.enable = true;
 
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
