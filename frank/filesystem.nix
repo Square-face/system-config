@@ -14,8 +14,22 @@
     ];
   };
 
-  fileSystems."/mnt/backups" = {
+  fileSystems."/mnt/1TB" = {
     device = "/dev/disk/by-uuid/83fd766d-7cf6-4e43-ae32-09d6eda8de70";
     fsType = "ext4";
+  };
+
+  fileSystems."/srv/backups" = {
+    depends = ["/mnt/1TB"];
+    device = "/mnt/1TB/backups";
+    fsType = "none";
+    options = ["bind"];
+  };
+
+  fileSystems."/srv/music" = {
+    depends = ["/mnt/1TB"];
+    device = "/mnt/1TB/music";
+    fsType = "none";
+    options = ["bind"];
   };
 }

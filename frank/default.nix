@@ -16,5 +16,6 @@
     ./hardware.nix
     ./services/home-assistant.nix
     ./services/dnsmasq.nix
+    ./services/navidrome.nix
   ];
 }
