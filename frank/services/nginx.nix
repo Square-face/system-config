@@ -26,7 +26,9 @@
       };
     };
 
-    virtualHosts."git.sq8.dev".extraConfig = "access_log /var/log/nginx/git/access.log;";
+    virtualHosts."git.sq8.dev" = {
+        locations."/".extraConfig = "access_log /var/log/nginx/git/access.log;";
+    };
   };
 
   services.cgit.sq8 = {

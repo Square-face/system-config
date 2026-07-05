@@ -1,9 +1,20 @@
 { config, lib, ... }:
 {
+    pipewire.raop = true;
   system.stateVersion = "25.11";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   rootbash.color = ''\e[38;5;226m\'';
+  services.openssh.listenAddresses = [
+    {
+      addr = "10.0.0.1";
+      port = 22;
+    }
+    {
+      addr = "10.2.2.1";
+      port = 22;
+    }
+  ];
 
   imports = [
     ./cloudflared.nix
