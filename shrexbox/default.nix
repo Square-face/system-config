@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   pipewire.lowLatency = false;
   pipewire.raop = true;
@@ -11,5 +16,4 @@
     ./networking.nix
     ./hardware.nix
   ];
-
 }
