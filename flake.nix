@@ -4,14 +4,29 @@
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs =
-    { nixpkgs-unstable, nixpkgs-stable, ... }:
+    {
+      nixpkgs-unstable,
+      nixpkgs-stable,
+      agenix,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      age = system: [
+        agenix.nixosModules.default
+        {
+          environment.systemPackages = [ agenix.packages."${system}".default ];
+        }
+      ];
+    in
     {
       nixosConfigurations = {
         shrexbox = nixpkgs-unstable.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
           modules = [
             ./shrexbox/default.nix
@@ -37,11 +52,12 @@
             ./common/programs/man.nix
             ./common/programs/zsh.nix
             ./common/programs/steam.nix
-          ];
+          ]
+          ++ age system;
         };
 
         flappy = nixpkgs-unstable.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
           modules = [
             ./flappy/default.nix
@@ -70,7 +86,7 @@
         };
 
         frank = nixpkgs-stable.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
           modules = [
             ./frank/default.nix
@@ -89,7 +105,9 @@
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
-          ];
+
+          ]
+          ++ age system;
         };
       };
     };
