@@ -31,6 +31,7 @@
             ./common/services/kerberos.nix
             ./common/services/upower.nix
             ./common/services/sshd.nix
+            ./common/services/xdg.nix
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
@@ -52,13 +53,14 @@
             ./common/system/ludd-ca.nix
             ./common/system/locale.nix
             ./common/system/nixos.nix
-            ./common/system/nh.nix
             ./common/system/tlp.nix
+            ./common/system/nh.nix
 
             ./common/services/pipewire.nix
             ./common/services/kerberos.nix
             ./common/services/upower.nix
             ./common/services/sshd.nix
+            ./common/services/xdg.nix
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
