@@ -23,6 +23,7 @@
             ./common/system/graphics.nix
             ./common/system/ludd-ca.nix
             ./common/system/locale.nix
+            ./common/system/nix-ld.nix
             ./common/system/nixos.nix
             ./common/system/nh.nix
 
@@ -52,6 +53,7 @@
             ./common/system/graphics.nix
             ./common/system/ludd-ca.nix
             ./common/system/locale.nix
+            ./common/system/nix-ld.nix
             ./common/system/nixos.nix
             ./common/system/tlp.nix
             ./common/system/nh.nix
