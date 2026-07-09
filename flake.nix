@@ -1,16 +1,13 @@
 {
   description = "SQ8 nixos system flake";
 
-  inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
-  };
+  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
   outputs =
-    { nixpkgs-unstable, nixpkgs-stable, ... }:
+    { nixpkgs, ... }:
     {
       nixosConfigurations = {
-        shrexbox = nixpkgs-unstable.lib.nixosSystem {
+        shrexbox = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           modules = [
@@ -37,7 +34,7 @@
           ];
         };
 
-        flappy = nixpkgs-unstable.lib.nixosSystem {
+        flappy = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           modules = [
@@ -63,7 +60,7 @@
           ];
         };
 
-        frank = nixpkgs-unstable.lib.nixosSystem {
+        frank = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           modules = [
