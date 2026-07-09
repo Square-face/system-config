@@ -80,7 +80,7 @@
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
-          ];
+          ] ++ age system;
         };
 
         frank = nixpkgs.lib.nixosSystem {

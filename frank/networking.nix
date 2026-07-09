@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   networking.hostName = "frank";
   networking.useNetworkd = true;
@@ -12,13 +12,14 @@
         Name = "lan0";
       };
     };
-    "30-wg0" = {
+    "30-shitcloud" = {
       netdevConfig = {
         Kind = "wireguard";
-        Name = "wg0";
+        Name = "shitcloud";
       };
       wireguardConfig = {
-        PrivateKeyFile = "/etc/nixos/secrets/wg0-priv";
+        PrivateKeyFile = config.age.secrets.wg-shitcloud.path;
+        RouteTable = "main";
       };
       wireguardPeers = [
         {
@@ -32,8 +33,8 @@
   };
 
   systemd.network.networks = {
-    "30-wg0" = {
-      matchConfig.Name = "wg0";
+    "30-shitcloud" = {
+      matchConfig.Name = "shitcloud";
       address = [ "10.2.2.1/16" ];
     };
     "30-eno1" = {

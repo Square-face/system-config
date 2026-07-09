@@ -24,6 +24,7 @@
     ./networking.nix
     ./filesystem.nix
     ./hardware.nix
+    ./secrets.nix
     ./services/home-assistant.nix
     ./services/dnsmasq.nix
     ./services/navidrome.nix
