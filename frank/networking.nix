@@ -44,7 +44,10 @@
 
     "30-lan0" = {
       matchConfig.Name = "lan0";
-      address = [ "10.0.0.1/24" "fd00:1234:5678::1/64"];
+      address = [
+        "10.0.0.1/24"
+        "fd00:1234:5678::1/64"
+      ];
       networkConfig.IPv4Forwarding = "yes";
       networkConfig.IPv6Forwarding = "yes";
     };
@@ -73,7 +76,7 @@
 
   networking.nat = {
     enable = true;
-    externalInterface = "enp0s20f0u2"; 
+    externalInterface = "enp0s20f0u2";
     internalInterfaces = [ "lan0" ];
     internalIPs = [ "10.0.0.0/24" ];
   };

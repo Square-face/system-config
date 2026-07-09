@@ -1,14 +1,30 @@
 {
   description = "SQ8 nixos system flake";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    agenix.url = "github:ryantm/agenix";
+  };
 
   outputs =
-    { nixpkgs, ... }:
+    {
+      nixpkgs,
+      agenix,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      age = system: [
+        agenix.nixosModules.default
+        {
+          environment.systemPackages = [ agenix.packages."${system}".default ];
+        }
+      ];
+    in
     {
       nixosConfigurations = {
         shrexbox = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
           modules = [
             ./shrexbox/default.nix
@@ -18,7 +34,9 @@
             ./common/system/systemd-boot.nix
             ./common/system/bluetooth.nix
             ./common/system/graphics.nix
+            ./common/system/ludd-ca.nix
             ./common/system/locale.nix
+            ./common/system/nix-ld.nix
             ./common/system/nixos.nix
             ./common/system/nh.nix
 
@@ -27,15 +45,17 @@
             ./common/services/kerberos.nix
             ./common/services/upower.nix
             ./common/services/sshd.nix
+            ./common/services/xdg.nix
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
             ./common/programs/steam.nix
-          ];
+          ]
+          ++ age system;
         };
 
         flappy = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
           modules = [
             ./flappy/default.nix
@@ -45,15 +65,18 @@
             ./common/system/networking.nix
             ./common/system/bluetooth.nix
             ./common/system/graphics.nix
+            ./common/system/ludd-ca.nix
             ./common/system/locale.nix
+            ./common/system/nix-ld.nix
             ./common/system/nixos.nix
-            ./common/system/nh.nix
             ./common/system/tlp.nix
+            ./common/system/nh.nix
 
             ./common/services/pipewire.nix
             ./common/services/kerberos.nix
             ./common/services/upower.nix
             ./common/services/sshd.nix
+            ./common/services/xdg.nix
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
@@ -61,7 +84,7 @@
         };
 
         frank = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
           modules = [
             ./frank/default.nix
@@ -80,7 +103,9 @@
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
-          ];
+
+          ]
+          ++ age system;
         };
       };
     };

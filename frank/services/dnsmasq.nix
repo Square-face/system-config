@@ -6,10 +6,10 @@
       port = 0;
 
       interface = "lan0";
-      
+
       # IPv4 and IPv6 DHCP pools
-      dhcp-range = [ 
-        "lan0,10.0.0.128,10.0.0.254,24h" 
+      dhcp-range = [
+        "lan0,10.0.0.128,10.0.0.254,24h"
         "fd00:1234:5678::,ra-stateless,ra-names"
       ];
 
