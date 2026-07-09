@@ -1,3 +1,3 @@
 { ... }: {
-  age.secrets.wg-shitcloud.file = ../secrets/wg_shitcloud-flappy.age;
+  age.secrets.wg-shitcloud.file = ../secrets/flappy/wg_shitcloud.age;
 }

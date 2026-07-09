@@ -10,7 +10,7 @@ let
 in
 {
   # Shitcloud vpn profiles
-  "wg_shitcloud-shrexbox.age".publicKeys = [ shrexbox ];
-  "wg_shitcloud-flappy.age".publicKeys = [ flappy ];
-  "wg_shitcloud-frank.age".publicKeys = [ frank ];
+  "shrexbox/wg_shitcloud.age".publicKeys = [ shrexbox ];
+  "flappy/wg_shitcloud.age".publicKeys = [ flappy ];
+  "frank/wg_shitcloud.age".publicKeys = [ frank ];
 }
