@@ -1,9 +1,9 @@
-{ config, ... }: {
+{ config, vars, ... }: {
   networking.wg-quick.interfaces = {
     shitcloud = {
       privateKeyFile = config.age.secrets.wg-shitcloud.path;
 
-      address = [ "10.2.100.4/32" ];
+      address = [ "${vars.shitcloud.wg.ip}/32" ];
       peers = [
         {
           publicKey = "1XaNV7e/cxm5hRAbLj+/MP/R9oO82aUTL27yb1eeFyU=";

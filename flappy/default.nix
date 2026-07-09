@@ -7,7 +7,6 @@
     ./filesystem.nix
     ./networking.nix
     ./hardware.nix
-    ./wireguard.nix
     ./secrets.nix
   ];
 }
