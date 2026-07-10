@@ -9,4 +9,5 @@
   };
 
   systemd.services.nix-daemon.serviceConfig.CPUWeight = 80;
+  security.sudo.wheelNeedsPassword = false;
 }

@@ -5,17 +5,21 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     {
       nixpkgs,
       agenix,
+      disko,
       ...
     }:
     let
       system = "x86_64-linux";
-      age = system: [
+      common = system: [
+        disko.nixosModules.disko
         agenix.nixosModules.default
         {
           environment.systemPackages = [ agenix.packages."${system}".default ];
@@ -32,6 +36,7 @@
 
           modules = [
             ./shrexbox/default.nix
+            ./common/secrets.nix
             ./common/system/sq8.nix
 
             ./common/system/steering-wheel.nix
@@ -56,7 +61,7 @@
             ./common/programs/zsh.nix
             ./common/programs/steam.nix
           ]
-          ++ age system;
+          ++ common system;
         };
 
         flappy = nixpkgs.lib.nixosSystem {
@@ -67,6 +72,7 @@
 
           modules = [
             ./flappy/default.nix
+            ./common/secrets.nix
             ./common/system/sq8.nix
 
             ./common/system/systemd-boot.nix
@@ -89,7 +95,7 @@
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
-          ] ++ age system;
+          ] ++ common system;
         };
 
         frank = nixpkgs.lib.nixosSystem {
@@ -100,6 +106,7 @@
 
           modules = [
             ./frank/default.nix
+            ./common/secrets.nix
             ./common/system/sq8.nix
 
             ./common/system/systemd-boot.nix
@@ -115,9 +122,8 @@
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
-
           ]
-          ++ age system;
+          ++ common system;
         };
       };
     };

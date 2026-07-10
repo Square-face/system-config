@@ -12,10 +12,11 @@
   system.stateVersion = "26.05";
 
   imports = [
-    ./filesystem.nix
     ./networking.nix
     ./hardware.nix
-    # ./wireguard.nix
     ./secrets.nix
+
+    ./disko.nix
+    { hardware.facter.reportPath = ./facter.json; }
   ];
 }
