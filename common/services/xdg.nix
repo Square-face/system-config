@@ -5,6 +5,7 @@
     xdgOpenUsePortal = true;
     config = {
       common.default = "*";
+      niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
       niri.default = [
         "gnome"
         "gtk"
