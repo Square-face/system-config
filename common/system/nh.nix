@@ -3,6 +3,6 @@
   programs.nh.enable = lib.mkDefault true;
   programs.nh.clean = {
     enable = true;
-    extraArgs = "--optimise";
+    extraArgs = "--optimise --no-gcroots";
   };
 }
