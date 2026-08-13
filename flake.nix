@@ -87,6 +87,7 @@
             ./common/system/tlp.nix
             ./common/system/nh.nix
 
+            ./common/services/containers.nix
             ./common/services/pipewire.nix
             ./common/services/kerberos.nix
             ./common/services/upower.nix
