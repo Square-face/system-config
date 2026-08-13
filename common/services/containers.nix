@@ -1,11 +1,8 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
-  virtualisation.podman = {
+  virtualisation.docker = {
     enable = lib.mkDefault true;
-
-    dockerCompat = lib.mkDefault true;
-
-    dockerSocket.enable = lib.mkDefault true;
-    autoPrune.enable = lib.mkDefault true;
+    rootless.setSocketVariable = true;
+    # autoPrune.enable = lib.mkDefault true;
   };
 }
