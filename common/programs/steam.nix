@@ -5,6 +5,7 @@
   ...
 }:
 {
+  imports = [../unfree.nix];
   programs.gamemode.enable = lib.mkDefault true;
 
   programs.steam = {
@@ -24,12 +25,11 @@
     mangohud
   ];
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-    ];
+  unfree.enable = true;
+  unfree.allowed = [
+    "steam"
+    "steam-original"
+    "steam-unwrapped"
+    "steam-run"
+  ];
 }
