@@ -34,10 +34,6 @@
         proxyWebsockets = true;
       };
     };
-
-    virtualHosts."git.sq8.dev" = {
-        locations."/".extraConfig = "access_log /var/log/nginx/git/access.log;";
-    };
   };
 
   services.cgit.sq8 = {
@@ -52,8 +48,13 @@
       enable-blame = 1;
       enable-git-config = 1;
       enable-commit-graph = 1;
+      enable-log-filecount = 1;
+      enable-log-linecount = 1;
+      enable-tree-linenumbers = 1;
+      logo = "https://files.sq8.dev/sq8/profile/sq8-80.gif";
       clone-url = "https://git.sq8.dev/$CGIT_REPO_URL";
       about-filter = "${pkgs.cgit}/lib/cgit/filters/about-formatting.sh";
+      source-filter = "${pkgs.cgit}/lib/cgit/filters/syntax-highlighting.py";
       readme = [
         "main:README.md"
         "main:readme.md"
