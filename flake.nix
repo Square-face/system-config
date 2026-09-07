@@ -87,6 +87,9 @@
             ./common/system/tlp.nix
             ./common/system/nh.nix
 
+            ./common/system/default.nix
+            { obs.enable = true; }
+
             ./common/services/containers.nix
             ./common/services/pipewire.nix
             ./common/services/kerberos.nix
