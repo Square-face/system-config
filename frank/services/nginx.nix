@@ -9,9 +9,18 @@
     };
 
     virtualHosts."static.sq8.dev" = {
-      locations."/".root = "/var/lib/nginx/static";
+      locations."/" = {
+        root = "/srv/static";
+      };
     };
-
+    virtualHosts."files.sq8.dev" = {
+      locations."/" = {
+        root = "/srv/files";
+        extraConfig = ''
+          autoindex on;
+        '';
+      };
+    };
     virtualHosts."home.lan" = {
       extraConfig = ''
         allow 10.0.0.0/24;
