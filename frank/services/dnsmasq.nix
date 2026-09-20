@@ -2,10 +2,14 @@
 {
   dns.enable = true;
   dns.DoH = true;
+  dns.block.adBlock = true;
 
   services.dnsmasq.settings = {
-    interface = ["lo" "lan0"];
-
+    # Unlike the dns module, we also want dnsmasq to listen on external interfaces
+    interface = [
+      "lo"
+      "lan0"
+    ];
     listen-address = [
       "::1" # Local
       "127.0.0.1"
