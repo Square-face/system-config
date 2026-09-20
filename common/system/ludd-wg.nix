@@ -16,6 +16,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    dns.enable = cfg.dns;
+
     networking.wg-quick.interfaces = {
       ludd = {
         privateKeyFile = config.age.secrets.wg-ludd.path;
@@ -28,12 +30,10 @@ in {
             endpoint = "130.240.22.206:51820";
           }
         ];
+
+        postUp = lib.mkIf cfg.dns (config.dns.addServer "ludd.ltu.se" "10.30.0.1");
+        postDown = lib.mkIf cfg.dns (config.dns.delServer "ludd.ltu.se" "10.30.0.1");
       };
     };
-
-    dns.enable = true;
-    dns.extraServers = lib.mkIf cfg.dns [
-      "/ludd.ltu.se/10.30.0.1"
-    ];
   };
 }

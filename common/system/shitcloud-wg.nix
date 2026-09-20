@@ -1,6 +1,13 @@
-{ config, vars, lib, ... }: let
+{
+  config,
+  vars,
+  lib,
+  ...
+}:
+let
   cfg = config.wg.shitcloud;
-in {
+in
+{
   options.wg.shitcloud = {
     enable = lib.mkEnableOption "Enable Shitcloud Wireguard VPN";
     ip = lib.mkOption {
@@ -16,6 +23,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    dns.enable = lib.mkDefault cfg.dns;
+
     networking.wg-quick.interfaces = {
       shitcloud = {
         privateKeyFile = config.age.secrets.wg-shitcloud.path;
@@ -28,12 +37,10 @@ in {
             endpoint = "130.240.204.10:51821";
           }
         ];
+
+        postUp = lib.mkIf cfg.dns (config.dns.addServer "shit" "10.2.0.1");
+        postDown = lib.mkIf cfg.dns (config.dns.delServer "shit" "10.2.0.1");
       };
     };
-
-    dns.enable = true;
-    dns.extraServers = lib.mkIf cfg.dns [
-      "/shit/10.2.0.1"
-    ];
   };
 }
