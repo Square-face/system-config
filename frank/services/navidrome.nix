@@ -1,6 +1,8 @@
-{ pkgs, ... }: let
+{ pkgs, ... }:
+let
   socket = "unix:/run/navidrome/navidrome.sock";
-in {
+in
+{
   services.navidrome.enable = true;
   services.navidrome.group = "nginx";
   services.navidrome.plugins = with pkgs.navidromePlugins; [
@@ -27,11 +29,11 @@ in {
     TranscodingCacheSize = "1GB";
 
     Prometheus = {
-        Enabled = true;
+      Enabled = true;
     };
   };
 
   services.nginx.virtualHosts."music.sq8.dev" = {
-      locations."/".proxyPass = "http://${socket}";
+    locations."/".proxyPass = "http://${socket}";
   };
 }

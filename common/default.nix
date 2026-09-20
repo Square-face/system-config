@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./unfree.nix
 

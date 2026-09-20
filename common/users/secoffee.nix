@@ -17,10 +17,13 @@ in
     age.secrets.password-secoffee.file = ../../secrets/password-secoffee.age;
 
     unfree.enable = true;
-    unfree.allowed = ["discord" "discord-unwrapped"];
+    unfree.allowed = [
+      "discord"
+      "discord-unwrapped"
+    ];
 
     kde.enable = true;
-    kde.enableUtilsFor = ["secoffee"];
+    kde.enableUtilsFor = [ "secoffee" ];
 
     nixpkgs.config.permittedInsecurePackages = [
       "electron-39.8.10"

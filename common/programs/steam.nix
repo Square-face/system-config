@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [../unfree.nix];
+  imports = [ ../unfree.nix ];
   programs.gamemode.enable = lib.mkDefault true;
 
   programs.steam = {

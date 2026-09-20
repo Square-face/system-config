@@ -20,16 +20,16 @@
   };
 
   fileSystems."/srv/backups" = {
-    depends = ["/mnt/1TB"];
+    depends = [ "/mnt/1TB" ];
     device = "/mnt/1TB/backups";
     fsType = "none";
-    options = ["bind"];
+    options = [ "bind" ];
   };
 
   fileSystems."/srv/music" = {
-    depends = ["/mnt/1TB"];
+    depends = [ "/mnt/1TB" ];
     device = "/mnt/1TB/music";
     fsType = "none";
-    options = ["bind"];
+    options = [ "bind" ];
   };
 }

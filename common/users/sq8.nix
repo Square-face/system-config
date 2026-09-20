@@ -49,6 +49,6 @@ in
     };
 
     nix.settings.trusted-users = lib.mkIf cfg.trust [ "sq8" ];
-    security.pam.services.swaylock = lib.mkIf cfg.swaylock {};
+    security.pam.services.swaylock = lib.mkIf cfg.swaylock { };
   };
 }

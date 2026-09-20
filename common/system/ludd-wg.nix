@@ -1,6 +1,13 @@
-{ config, vars, lib, ... }: let
+{
+  config,
+  vars,
+  lib,
+  ...
+}:
+let
   cfg = config.wg.ludd;
-in {
+in
+{
   options.wg.ludd = {
     enable = lib.mkEnableOption "Enable /LUDD/ Wireguard VPN";
     ip = lib.mkOption {
@@ -26,7 +33,13 @@ in {
         peers = [
           {
             publicKey = "CkHERo9J8Kz4UxtZRXx3JhQpb8jfxeqBxdbkMGp3piE=";
-            allowedIPs = [ "10.30.0.0/16" "10.10.0.0/16" "172.30.0.0/16" "172.19.0.0/16" "130.240.202.0/24"];
+            allowedIPs = [
+              "10.30.0.0/16"
+              "10.10.0.0/16"
+              "172.30.0.0/16"
+              "172.19.0.0/16"
+              "130.240.202.0/24"
+            ];
             endpoint = "130.240.22.206:51820";
           }
         ];

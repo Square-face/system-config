@@ -77,7 +77,6 @@
             ./common/system/tlp.nix
             ./common/system/nh.nix
 
-
             ./common/services/containers.nix
             ./common/services/pipewire.nix
             ./common/services/kerberos.nix
@@ -87,7 +86,8 @@
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
-          ] ++ common system;
+          ]
+          ++ common system;
         };
 
         frank = nixpkgs.lib.nixosSystem {

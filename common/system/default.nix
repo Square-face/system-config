@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./obs.nix
     ./dns.nix

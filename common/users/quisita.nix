@@ -10,17 +10,20 @@ in
 {
   options.quisita = {
     enable = lib.mkEnableOption "Enable Quisita's user";
-    trust = lib.mkEnableOption  "Trust Quisita";
+    trust = lib.mkEnableOption "Trust Quisita";
   };
 
   config = lib.mkIf cfg.enable {
     age.secrets.password-quisita.file = ../../secrets/password-quisita.age;
 
     unfree.enable = true;
-    unfree.allowed = ["discord" "discord-unwrapped"];
+    unfree.allowed = [
+      "discord"
+      "discord-unwrapped"
+    ];
 
     kde.enable = true;
-    kde.enableUtilsFor = ["quisita"];
+    kde.enableUtilsFor = [ "quisita" ];
 
     nixpkgs.config.permittedInsecurePackages = [
       "electron-39.8.10"

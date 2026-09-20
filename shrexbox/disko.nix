@@ -2,22 +2,31 @@
   fileSystems."/persist".neededForBoot = true;
 
   fileSystems."/etc/ssh" = {
-      depends = ["/persist"];
-      device = "/persist/etc/ssh";
-      fsType = "none";
-      options = ["bind"];
-      neededForBoot = true;
+    depends = [ "/persist" ];
+    device = "/persist/etc/ssh";
+    fsType = "none";
+    options = [ "bind" ];
+    neededForBoot = true;
   };
 
   disko.devices = {
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = ["size=5G" "mode=1755" "uid=0" "gid=0"];
+        mountOptions = [
+          "size=5G"
+          "mode=1755"
+          "uid=0"
+          "gid=0"
+        ];
       };
       "/home/sq8" = {
         fsType = "tmpfs";
-        mountOptions = ["size=5G" "mode=1700" "uid=1000"];
+        mountOptions = [
+          "size=5G"
+          "mode=1700"
+          "uid=1000"
+        ];
       };
     };
     disk = {
@@ -47,7 +56,10 @@
                 # postCreateHook = "systemd-cryptenroll --fido2-device=auto /dev/nvme0n1p2";
                 passwordFile = "/tmp/disk.pass";
                 settings = {
-                  crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+                  crypttabExtraOpts = [
+                    "fido2-device=auto"
+                    "token-timeout=10"
+                  ];
                   allowDiscards = true;
                 };
                 content = {
@@ -68,7 +80,7 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"];
+              extraArgs = [ "-f" ];
               subvolumes."/home" = {
                 mountOptions = [ "compress=zstd" ];
                 mountpoint = "/home";

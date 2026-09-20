@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
   cfg = config.obs;
-in {
+in
+{
   options.obs = {
     enable = lib.mkOption {
       description = "Enable OBS support";
