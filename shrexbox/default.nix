@@ -22,6 +22,11 @@
   quisita.enable = true;
   secoffee.enable = true;
 
+  wg.ludd = {
+    enable = true;
+    ip = "192.168.69.23";
+  };
+
   imports = [
     ./networking.nix
     ./hardware.nix

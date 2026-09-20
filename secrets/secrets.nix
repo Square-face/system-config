@@ -15,6 +15,9 @@ in
   "flappy/wg_shitcloud.age".publicKeys = [ flappy ];
   "frank/wg_shitcloud.age".publicKeys = [ frank ];
 
+  "shrexbox/wg_ludd.age".publicKeys = [ shrexbox ];
+  "flappy/wg_ludd.age".publicKeys = [ flappy ];
+
   "password-sq8.age".publicKeys = systems;
   "password-quisita.age".publicKeys = systems;
   "password-secoffee.age".publicKeys = systems;
