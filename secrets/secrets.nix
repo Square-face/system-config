@@ -16,4 +16,6 @@ in
   "frank/wg_shitcloud.age".publicKeys = [ frank ];
 
   "password-sq8.age".publicKeys = systems;
+  "password-quisita.age".publicKeys = systems;
+  "password-secoffee.age".publicKeys = systems;
 }

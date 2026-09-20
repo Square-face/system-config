@@ -30,6 +30,7 @@ in
   config.users.users.sq8 = lib.mkIf cfg.enabled {
     isNormalUser = true;
     isSystemUser = lib.mkForce false;
+    uid = 1000;
     shell = pkgs.zsh;
     description = "Linus Michelsson";
     extraGroups = [

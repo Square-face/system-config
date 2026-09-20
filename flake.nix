@@ -38,6 +38,8 @@
             ./shrexbox/default.nix
             ./common/secrets.nix
             ./common/system/sq8.nix
+            ./common/system/quisita.nix
+            ./common/system/secoffee.nix
 
             ./common/system/steering-wheel.nix
             ./common/system/systemd-boot.nix
@@ -55,6 +57,7 @@
             ./common/services/upower.nix
             ./common/services/sshd.nix
             ./common/services/xdg.nix
+            ./common/system/kde.nix
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
