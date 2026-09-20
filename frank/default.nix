@@ -16,6 +16,12 @@
   ];
 
   shitcloud.vpn.enable = true;
+  shitcloud.vpn.dns = false; # Prevent dns server from exposing internal service names
+  dns.enable = true;
+  dns.DoH = true;
+
+  sq8.enable = true;
+  sq8.trust = true;
 
   imports = [
     ./cloudflared.nix

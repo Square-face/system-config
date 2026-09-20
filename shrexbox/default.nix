@@ -13,8 +13,14 @@
 
   obs.enable = true;
 
-  shitcloud.vpn.enable = true;
   dns.enable = true;
+  shitcloud.vpn.enable = true;
+
+  sq8.enable = true;
+  sq8.trust = true;
+
+  quisita.enable = true;
+  secoffee.enable = true;
 
   imports = [
     ./networking.nix

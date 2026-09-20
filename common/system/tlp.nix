@@ -1,5 +1,6 @@
 { lib, ... }:
 {
+  services.power-profiles-daemon.enable = lib.mkForce false;
   services.tlp.enable = lib.mkDefault true;
   services.tlp.settings = {
     CPU_SCALING_GOVERNOR_ON_AC = "performance";

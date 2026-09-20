@@ -9,25 +9,15 @@ let
 in
 {
   options.quisita = {
-    enabled = lib.mkOption {
-      description = "Enable Quisita's user";
-      type = lib.types.bool;
-      default = true;
-    };
-    trusted = lib.mkOption {
-      description = "Trust Quisita";
-      type = lib.types.bool;
-      default = false;
-    };
+    enable = lib.mkEnableOption "Enable Quisita's user";
+    trust = lib.mkEnableOption  "Trust Quisita";
   };
 
-  imports = [
-    ../unfree.nix
-  ];
+  config = lib.mkIf cfg.enable {
+    age.secrets.password-quisita.file = ../../secrets/password-quisita.age;
 
-  config = lib.mkIf cfg.enabled {
     unfree.enable = true;
-    unfree.allowed = ["discord"];
+    unfree.allowed = ["discord" "discord-unwrapped"];
 
     kde.enable = true;
     kde.enableUtilsFor = ["quisita"];
@@ -63,6 +53,6 @@ in
       ];
     };
 
-    nix.settings.trusted-users = lib.mkIf cfg.trusted [ "quisita" ];
+    nix.settings.trusted-users = lib.mkIf cfg.trust [ "quisita" ];
   };
 }

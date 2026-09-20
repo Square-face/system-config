@@ -35,11 +35,8 @@
           };
 
           modules = [
+            ./common/default.nix
             ./shrexbox/default.nix
-            ./common/secrets.nix
-            ./common/system/sq8.nix
-            ./common/system/quisita.nix
-            ./common/system/secoffee.nix
 
             ./common/system/steering-wheel.nix
             ./common/system/systemd-boot.nix
@@ -57,7 +54,6 @@
             ./common/services/upower.nix
             ./common/services/sshd.nix
             ./common/services/xdg.nix
-            ./common/system/kde.nix
 
             ./common/programs/man.nix
             ./common/programs/zsh.nix
@@ -74,8 +70,7 @@
 
           modules = [
             ./flappy/default.nix
-            ./common/secrets.nix
-            ./common/system/sq8.nix
+            ./common/default.nix
 
             ./common/system/systemd-boot.nix
             ./common/system/networking.nix
@@ -88,7 +83,6 @@
             ./common/system/tlp.nix
             ./common/system/nh.nix
 
-            ./common/system/default.nix
 
             ./common/services/containers.nix
             ./common/services/pipewire.nix
@@ -110,9 +104,7 @@
 
           modules = [
             ./frank/default.nix
-            ./common/secrets.nix
-            ./common/system/sq8.nix
-            ./common/system/default.nix
+            ./common/default.nix
 
             ./common/system/systemd-boot.nix
             ./common/system/rootbash.nix

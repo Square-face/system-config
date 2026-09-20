@@ -9,25 +9,15 @@ let
 in
 {
   options.secoffee = {
-    enabled = lib.mkOption {
-      description = "Enable Quisita's user";
-      type = lib.types.bool;
-      default = true;
-    };
-    trusted = lib.mkOption {
-      description = "Trust Quisita";
-      type = lib.types.bool;
-      default = false;
-    };
+    enable = lib.mkEnableOption "Enable Secoffee's user";
+    trust = lib.mkEnableOption "Trust Secoffee";
   };
 
-  imports = [
-    ../unfree.nix
-  ];
+  config = lib.mkIf cfg.enable {
+    age.secrets.password-secoffee.file = ../../secrets/password-secoffee.age;
 
-  config = lib.mkIf cfg.enabled {
     unfree.enable = true;
-    unfree.allowed = ["discord"];
+    unfree.allowed = ["discord" "discord-unwrapped"];
 
     kde.enable = true;
     kde.enableUtilsFor = ["secoffee"];
@@ -63,6 +53,6 @@ in
       ];
     };
 
-    nix.settings.trusted-users = lib.mkIf cfg.trusted [ "secoffee" ];
+    nix.settings.trusted-users = lib.mkIf cfg.trust [ "secoffee" ];
   };
 }
