@@ -15,12 +15,14 @@
     }
   ];
 
+  shitcloud.vpn.enable = true;
+
   imports = [
     ./cloudflared.nix
     ./services/nginx.nix
-    ./services/tayga.nix
+    # ./services/tayga.nix
+    # ./services/unbound.nix
     ./borg.nix
-    ./services/unbound.nix
     ./networking.nix
     ./filesystem.nix
     ./hardware.nix

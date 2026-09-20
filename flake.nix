@@ -41,7 +41,6 @@
 
             ./common/system/steering-wheel.nix
             ./common/system/systemd-boot.nix
-            ./common/system/shitcloud-wg.nix
             ./common/system/bluetooth.nix
             ./common/system/graphics.nix
             ./common/system/ludd-ca.nix
@@ -76,7 +75,6 @@
             ./common/system/sq8.nix
 
             ./common/system/systemd-boot.nix
-            ./common/system/shitcloud-wg.nix
             ./common/system/networking.nix
             ./common/system/bluetooth.nix
             ./common/system/graphics.nix
@@ -88,7 +86,6 @@
             ./common/system/nh.nix
 
             ./common/system/default.nix
-            { obs.enable = true; }
 
             ./common/services/containers.nix
             ./common/services/pipewire.nix
@@ -112,6 +109,7 @@
             ./frank/default.nix
             ./common/secrets.nix
             ./common/system/sq8.nix
+            ./common/system/default.nix
 
             ./common/system/systemd-boot.nix
             ./common/system/rootbash.nix
