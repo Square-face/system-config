@@ -11,21 +11,25 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = "26.05";
 
+  wg.ludd = {
+    enable = true;
+    ip = "192.168.69.23";
+  };
+  wg.shitcloud = {
+    enable = true;
+    ip = "10.2.100.1";
+  };
+
   obs.enable = true;
 
   dns.enable = true;
-  shitcloud.vpn.enable = true;
+  dns.DoH = true;
 
   sq8.enable = true;
   sq8.trust = true;
 
   quisita.enable = true;
   secoffee.enable = true;
-
-  wg.ludd = {
-    enable = true;
-    ip = "192.168.69.23";
-  };
 
   imports = [
     ./networking.nix

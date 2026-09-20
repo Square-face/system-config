@@ -1,8 +1,13 @@
 { config, vars, lib, ... }: let
-  cfg = config.shitcloud.vpn;
+  cfg = config.wg.shitcloud;
 in {
-  options.shitcloud.vpn = {
+  options.wg.shitcloud = {
     enable = lib.mkEnableOption "Enable Shitcloud Wireguard VPN";
+    ip = lib.mkOption {
+      description = "This devices ip address";
+      type = lib.types.str;
+      example = "192.168.100.67";
+    };
     dns = lib.mkOption {
       description = "Add shitcloud to dns for .shit domains (also enables the dns module)";
       type = lib.types.bool;
@@ -15,7 +20,7 @@ in {
       shitcloud = {
         privateKeyFile = config.age.secrets.wg-shitcloud.path;
 
-        address = [ "${vars.shitcloud.wg.ip}/32" ];
+        address = [ "${cfg.ip}/32" ];
         peers = [
           {
             publicKey = "1XaNV7e/cxm5hRAbLj+/MP/R9oO82aUTL27yb1eeFyU=";

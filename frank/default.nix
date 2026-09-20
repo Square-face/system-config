@@ -15,8 +15,11 @@
     }
   ];
 
-  shitcloud.vpn.enable = true;
-  shitcloud.vpn.dns = false; # Prevent dns server from exposing internal service names
+  wg.shitcloud = {
+    enable = true;
+    dns = false; # Prevent dns server from exposing internal service names
+    ip = "10.2.2.1";
+  };
   dns.enable = true;
   dns.DoH = true;
 

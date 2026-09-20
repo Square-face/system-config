@@ -30,9 +30,6 @@
       nixosConfigurations = {
         shrexbox = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {
-            vars = import ./shrexbox/variables.nix;
-          };
 
           modules = [
             ./common/default.nix
@@ -64,9 +61,6 @@
 
         flappy = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {
-            vars = import ./flappy/variables.nix;
-          };
 
           modules = [
             ./flappy/default.nix
@@ -98,9 +92,6 @@
 
         frank = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {
-            vars = import ./frank/variables.nix;
-          };
 
           modules = [
             ./frank/default.nix

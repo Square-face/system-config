@@ -5,17 +5,20 @@
 
   obs.enable = true;
 
-  shitcloud.vpn.enable = true;
+  wg.ludd = {
+    enable = true;
+    ip = "192.168.69.22";
+  };
+  wg.shitcloud = {
+    enable = true;
+    ip = "10.2.100.4";
+  };
+
   dns.enable = true;
   dns.DoH = true;
 
   sq8.enable = true;
   sq8.trust = true;
-
-  wg.ludd = {
-    enable = true;
-    ip = "192.168.69.22";
-  };
 
   imports = [
     ./filesystem.nix
