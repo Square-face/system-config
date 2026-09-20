@@ -42,6 +42,7 @@ in
       "kvm"
       "podman"
       "nginx"
+      "docker"
     ];
 
     # initialPassword = "temp";
