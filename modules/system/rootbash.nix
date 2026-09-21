@@ -5,14 +5,11 @@
   ...
 }:
 {
-  options.rootbash.enable = lib.mkOption {
-    description = "Enable rootbash";
-    type = lib.types.bool;
-    default = true;
-  };
+  options.rootbash.enable = lib.mkEnableOption "Enable rootbash";
   options.rootbash.color = lib.mkOption {
     description = "Color for the shell when running as root";
     type = lib.types.str;
+    example = ''\e[38;5;226m\'';
   };
   config =
     let

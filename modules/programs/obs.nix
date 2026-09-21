@@ -16,6 +16,7 @@ in
       default = true;
     };
   };
+
   config = {
     programs.obs-studio.enable = lib.mkDefault cfg.enable;
     programs.obs-studio.enableVirtualCamera = lib.mkDefault cfg.enableCam;

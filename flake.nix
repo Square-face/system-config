@@ -20,8 +20,8 @@
       extras = import ./lib { lib = nixpkgs.lib; };
       system = "x86_64-linux";
       common = system: [
-        ./common
         ./modules
+
         disko.nixosModules.disko
         agenix.nixosModules.default
         {
@@ -36,28 +36,7 @@
           specialArgs = { inherit extras; };
 
           modules = [
-            ./shrexbox/default.nix
-
-            ./common/system/steering-wheel.nix
-            ./common/system/systemd-boot.nix
-            ./common/system/bluetooth.nix
-            ./common/system/graphics.nix
-            ./common/system/ludd-ca.nix
-            ./common/system/locale.nix
-            ./common/system/nix-ld.nix
-            ./common/system/nixos.nix
-            ./common/system/nh.nix
-
-            ./common/services/containers.nix
-            ./common/services/pipewire.nix
-            ./common/services/kerberos.nix
-            ./common/services/upower.nix
-            ./common/services/sshd.nix
-            ./common/services/xdg.nix
-
-            ./common/programs/man.nix
-            ./common/programs/zsh.nix
-            ./common/programs/steam.nix
+            ./shrexbox
           ]
           ++ common system;
         };
@@ -67,28 +46,7 @@
           specialArgs = { inherit extras; };
 
           modules = [
-            ./flappy/default.nix
-
-            ./common/system/systemd-boot.nix
-            ./common/system/networking.nix
-            ./common/system/bluetooth.nix
-            ./common/system/graphics.nix
-            ./common/system/ludd-ca.nix
-            ./common/system/locale.nix
-            ./common/system/nix-ld.nix
-            ./common/system/nixos.nix
-            ./common/system/tlp.nix
-            ./common/system/nh.nix
-
-            ./common/services/containers.nix
-            ./common/services/pipewire.nix
-            ./common/services/kerberos.nix
-            ./common/services/upower.nix
-            ./common/services/sshd.nix
-            ./common/services/xdg.nix
-
-            ./common/programs/man.nix
-            ./common/programs/zsh.nix
+            ./flappy
           ]
           ++ common system;
         };
@@ -98,20 +56,7 @@
           specialArgs = { inherit extras; };
 
           modules = [
-            ./frank/default.nix
-
-            ./common/system/systemd-boot.nix
-            ./common/system/rootbash.nix
-            ./common/system/locale.nix
-            ./common/system/nixos.nix
-            ./common/system/nh.nix
-
-            ./common/services/containers.nix
-            ./common/services/sshd.nix
-            ./common/services/weechat.nix
-
-            ./common/programs/man.nix
-            ./common/programs/zsh.nix
+            ./frank
           ]
           ++ common system;
         };

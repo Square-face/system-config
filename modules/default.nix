@@ -1,5 +1,10 @@
 { ... }: {
   imports = [
-    ./alloy.nix
+    ./users
+    ./gaming
+    ./system
+    ./services
+    ./programs
+    ./networking
   ];
 }

@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  extras,
   config,
   ...
 }:
@@ -11,16 +12,31 @@ in
   options.sq8 = {
     enable = lib.mkEnableOption "Enable SQ8's user";
     trust = lib.mkEnableOption "Trust SQ8";
-    swaylock = lib.mkOption {
-      description = "Enable swaylock pam service";
-      type = lib.types.bool;
-      default = true;
+    niri = {
+      xdg = extras.options.mkEnabledOption "Configure xdg for niri";
+      swaylock = extras.options.mkEnabledOption "Enable swaylock pam service";
     };
   };
 
   config = lib.mkIf cfg.enable {
     age.secrets.password-sq8.file = ../../secrets/password-sq8.age;
 
+    nix.settings.use-xdg-base-directories = lib.mkDefault true;
+    xdg.portal = lib.mkIf cfg.niri.xdg {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config = {
+        common.default = "*";
+        niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        niri.default = [ "gnome" "gtk" ];
+      };
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome # Required for Niri screencasting
+        xdg-desktop-portal-gtk # Required for file choosers
+      ];
+    };
+
+    programs.zsh.enable = lib.mkDefault true;
     users.users.sq8 = {
       isNormalUser = true;
       isSystemUser = lib.mkForce false;
@@ -49,6 +65,6 @@ in
     };
 
     nix.settings.trusted-users = lib.mkIf cfg.trust [ "sq8" ];
-    security.pam.services.swaylock = lib.mkIf cfg.swaylock { };
+    security.pam.services.swaylock = lib.mkIf cfg.niri.swaylock { };
   };
 }

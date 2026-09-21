@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.wg.ludd;
+  cfg = config.ludd.vpn;
 in
 {
-  options.wg.ludd = {
+  options.ludd.vpn = {
     enable = lib.mkEnableOption "Enable /LUDD/ Wireguard VPN";
     ip = lib.mkOption {
       description = "This devices ip address";
