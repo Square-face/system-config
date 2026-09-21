@@ -9,11 +9,7 @@ let
 in
 {
   options.obs = {
-    enable = lib.mkOption {
-      description = "Enable OBS support";
-      type = lib.types.bool;
-      default = false;
-    };
+    enable = lib.mkEnableOption "Enable OBS support";
     enableCam = lib.mkOption {
       description = "Enable configuration for the virtual camera to work";
       type = lib.types.bool;

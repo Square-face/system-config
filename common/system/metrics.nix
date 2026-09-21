@@ -4,10 +4,12 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.metrics;
   host = config.networking.hostName;
-in {
+in
+{
   options.metrics = {
     enable = lib.mkEnableOption "Enable alloy agent to collect metrics";
     sources = with extras.options; {
@@ -42,7 +44,7 @@ in {
           forward_to = [ "loki.relabel.journal.receiver" ];
           labels = {
             instance = host;
-            job="journal";
+            job = "journal";
           };
         };
 
@@ -50,7 +52,7 @@ in {
           forward_to = [ "loki.write.central.receiver" ];
           rule = {
             source_labels = [ "__journal__systemd_unit" ];
-            target_label  = "unit";
+            target_label = "unit";
           };
         };
 
@@ -75,25 +77,37 @@ in {
         exporter."containers".kind = lib.mkIf cfg.sources.cadvisor "cadvisor";
         exporter."node_exporter" = lib.mkIf cfg.sources.node {
           kind = "unix";
-          set_collectors = [ "cpu" "cpufreq" "meminfo" "netdev" "diskstats" "filesystem" "stat" "processes" ];
+          set_collectors = [
+            "cpu"
+            "cpufreq"
+            "meminfo"
+            "netdev"
+            "diskstats"
+            "filesystem"
+            "stat"
+            "processes"
+          ];
           netdev.device_exclude = "veth.*|br-.*|lo";
           filesystem.mount_points_exclude = "/nix/store";
         };
 
-        scrape."metrics_120s" = let
-          smartctl = {
-            job         = "smartctl";
-            instance    = "frank";
-            __address__ = "127.0.0.1:9633";
+        scrape."metrics_120s" =
+          let
+            smartctl = {
+              job = "smartctl";
+              instance = "frank";
+              __address__ = "127.0.0.1:9633";
+            };
+          in
+          {
+            scrape_interval = "120s";
+            scrape_timeout = "5s";
+            forward_to = [ "prometheus.remote_write.central.receiver" ];
+            targets =
+              [ ]
+              ++ (lib.optional cfg.sources.smartctl [ smartctl ])
+              ++ (lib.optional cfg.sources.cadvisor "prometheus.exporter.cadvisor.containers.targets");
           };
-        in {
-          scrape_interval = "120s";
-          scrape_timeout = "5s";
-          forward_to = [ "prometheus.remote_write.central.receiver" ];
-          targets = [ ]
-            ++ (lib.optional cfg.sources.smartctl [smartctl])
-            ++ (lib.optional cfg.sources.cadvisor "prometheus.exporter.cadvisor.containers.targets");
-        };
 
         scrape."metrics_5s" = {
           scrape_interval = "5s";
