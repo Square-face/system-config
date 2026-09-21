@@ -17,8 +17,11 @@
       ...
     }:
     let
+      extras = import ./lib { lib = nixpkgs.lib; };
       system = "x86_64-linux";
       common = system: [
+        ./common
+        ./modules
         disko.nixosModules.disko
         agenix.nixosModules.default
         {
@@ -30,9 +33,9 @@
       nixosConfigurations = {
         shrexbox = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit extras; };
 
           modules = [
-            ./common/default.nix
             ./shrexbox/default.nix
 
             ./common/system/steering-wheel.nix
@@ -61,10 +64,10 @@
 
         flappy = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit extras; };
 
           modules = [
             ./flappy/default.nix
-            ./common/default.nix
 
             ./common/system/systemd-boot.nix
             ./common/system/networking.nix
@@ -92,14 +95,13 @@
 
         frank = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit extras; };
 
           modules = [
             ./frank/default.nix
-            ./common/default.nix
 
             ./common/system/systemd-boot.nix
             ./common/system/rootbash.nix
-            ./common/system/metrics.nix
             ./common/system/locale.nix
             ./common/system/nixos.nix
             ./common/system/nh.nix

@@ -26,6 +26,10 @@
   sq8.enable = true;
   sq8.trust = true;
 
+  metrics.enable = true;
+  metrics.prom_url = "http://10.2.0.1:9090/api/v1/write";
+  metrics.loki_url = "http://10.2.0.1:3100/loki/api/v1/push";
+
   imports = [
     ./cloudflared.nix
     ./services/nginx.nix

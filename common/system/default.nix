@@ -5,5 +5,6 @@
     ./kde.nix
     ./shitcloud-wg.nix
     ./ludd-wg.nix
+    ./metrics.nix
   ];
 }
