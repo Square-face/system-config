@@ -29,9 +29,6 @@
     ip = "10.2.2.1";
   };
 
-  dns.enable = true;
-  dns.DoH = true;
-
   sq8.enable = true;
   sq8.trust = true;
 

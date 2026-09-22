@@ -3,6 +3,18 @@
   networking.hostName = "shrexbox";
   networking.networkmanager.enable = true;
 
+  dns.enable = true;
+  dns.DoH = true;
+
+  ludd.vpn = {
+    enable = true;
+    ip = "192.168.69.22";
+  };
+  wg.shitcloud = {
+    enable = true;
+    ip = "10.2.100.1";
+  };
+
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
   networking.interfaces.enp14s0.ipv4 = {

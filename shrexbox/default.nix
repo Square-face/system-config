@@ -25,18 +25,7 @@
   ludd = {
     ca.enable = true;
     krb.enable = true;
-    vpn = {
-      enable = true;
-      ip = "192.168.69.22";
-    };
   };
-  wg.shitcloud = {
-    enable = true;
-    ip = "10.2.100.1";
-  };
-
-  dns.enable = true;
-  dns.DoH = true;
 
   sq8.enable = true;
   sq8.trust = true;

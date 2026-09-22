@@ -3,6 +3,9 @@
   networking.hostName = "frank";
   networking.useNetworkd = true;
 
+  dns.enable = true;
+  dns.DoH = true;
+
   networking.nameservers = [ "127.0.0.1" ];
 
   systemd.network.netdevs = {
