@@ -95,7 +95,7 @@ in
           let
             smartctl = {
               job = "smartctl";
-              instance = "frank";
+              instance = host;
               __address__ = "127.0.0.1:9633";
             };
           in
