@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
   cfg = config.ludd.ca;
 in
 {

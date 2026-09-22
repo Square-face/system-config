@@ -1,4 +1,10 @@
-{ config, extras, pkgs, lib, ... }:
+{
+  config,
+  extras,
+  pkgs,
+  lib,
+  ...
+}:
 let
   banner = pkgs.writeText "banner" "Tagga fejden\n";
   cfg = config.sshd;

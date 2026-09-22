@@ -1,4 +1,5 @@
-{ config, lib, ... }:let
+{ config, lib, ... }:
+let
   cfg = config.bootloader;
 in
 {

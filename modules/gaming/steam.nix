@@ -4,16 +4,21 @@
   extras,
   config,
   ...
-}: let
+}:
+let
   cfg = config.gaming.steam;
-in {
-  options.gaming.steam = with lib; with extras.options; {
-    enable = mkEnableOption "Enable steam system wide";
-    paranoid = mkEnableOption "Disables all firewall rules.";
-    compatability = mkEnabledOption "Configures steam for better compatability";
-    gamemode = mkEnabledOption "Enable gamemode";
-    gamescope = mkEnabledOption "Enable gamescope";
-  };
+in
+{
+  options.gaming.steam =
+    with lib;
+    with extras.options;
+    {
+      enable = mkEnableOption "Enable steam system wide";
+      paranoid = mkEnableOption "Disables all firewall rules.";
+      compatability = mkEnabledOption "Configures steam for better compatability";
+      gamemode = mkEnabledOption "Enable gamemode";
+      gamescope = mkEnabledOption "Enable gamescope";
+    };
 
   config = lib.mkIf cfg.enable {
     programs.steam = {

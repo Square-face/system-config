@@ -19,7 +19,6 @@ in
       alsa.enable = lib.mkDefault true;
       alsa.support32Bit = lib.mkDefault true;
 
-
       extraConfig = lib.mkIf cfg.lowLatency {
         pipewire."92-low-latency" = {
           "context.properties" = {

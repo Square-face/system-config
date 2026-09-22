@@ -1,4 +1,10 @@
-{ config, extras, lib, ... }: let
+{
+  config,
+  extras,
+  lib,
+  ...
+}:
+let
   cfg = config.ludd.krb;
 in
 {
