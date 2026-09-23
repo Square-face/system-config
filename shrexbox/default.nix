@@ -7,6 +7,7 @@
 {
   locale.swedish = true;
 
+  landscape.enable = true;
   bootloader.enable = true;
   bluetooth.enable = true;
   graphics.enable = true;

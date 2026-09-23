@@ -9,6 +9,7 @@
     ./kerberos.nix
     ./ludd-ca.nix
     ./bootloader.nix
+    ./landscape.nix
     ./locale.nix
     ./flakes.nix
   ];

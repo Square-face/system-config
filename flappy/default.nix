@@ -11,6 +11,7 @@
   graphics.enable = true;
   bluetooth.enable = true;
   bootloader.enable = true;
+  landscape.enable = true;
 
   locale.swedish = true;
 

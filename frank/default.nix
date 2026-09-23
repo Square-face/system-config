@@ -4,6 +4,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   locale.swedish = true;
+  landscape.enable = true;
   bootloader.enable = true;
   flakes.enable = true;
   docker.enable = true;
