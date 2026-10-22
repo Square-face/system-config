@@ -72,9 +72,11 @@ in
   config =
     let
       # Download all hosts files
-      hosts = builtins.fetchTarball {
-        url = "https://github.com/StevenBlack/hosts/archive/refs/tags/3.16.115.tar.gz";
-        sha256 = "02jhr67b5f9hqam93blc23w2d8jsqh6zjgbmdl2vs4glf4m1gsff";
+      hosts = pkgs.fetchFromGitHub {
+        owner = "StevenBlack";
+        repo = "hosts";
+        rev = "3.16.115";
+        hash = "sha256-zukXKnH0Eb0FbXU9+Q3EWqIm+BCMrpGqwjC5so7JUAo=";
       };
 
       # Filter the names of the active categories
@@ -108,7 +110,6 @@ in
         services.dnsmasq.settings = {
           # Dont listen to the system if DoH is enabled
           no-resolv = cfg.DoH;
-          resolv-file = lib.mkIf cfg.DoH "";
 
           bind-interfaces = true;
           listen-address = [
@@ -119,7 +120,7 @@ in
           server = servers;
 
           addn-hosts = blocklist;
-          servers-file = "/run/dnsmasq/servers.conf";
+          servers-file = "${cfg.runtimeConfDir}/servers.conf";
         };
 
         # DNS Over HTTPS Proxy
@@ -175,15 +176,15 @@ in
       })
       {
         dns.addServer = domain: ip: ''
-          line='server=/${domain}/${ip}'
-          file='${cfg.runtimeConfDir}/servers.conf'
-          if ! grep "$line" "file" 2> /dev/null; then
-            echo "$line" >> $file
-          fi
-          systemctl reload dnsmasq
-        '';
+            line='server=/${domain}/${ip}'
+            file='${cfg.runtimeConfDir}/servers.conf'
+            grep -qxF "$line" "$file" 2> /dev/null || echo "$line" >> "$file"
+
+            systemctl reload dnsmasq
+          '';
+
         dns.delServer = domain: ip: ''
-          ${pkgs.gnused}/bin/sed -i '\|server=/${domain}/${ip}|d' ${cfg.runtimeConfDir}/servers.conf
+          ${pkgs.gnused}/bin/sed -i '\|server=/${domain}/${ip}|d' '${cfg.runtimeConfDir}/servers.conf'
           systemctl reload dnsmasq
         '';
       }
