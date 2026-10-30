@@ -60,6 +60,16 @@
           ]
           ++ common system;
         };
+
+        shitbix = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit extras; };
+
+          modules = [
+            ./shitbix
+          ]
+          ++ common system;
+        };
       };
     };
 }
