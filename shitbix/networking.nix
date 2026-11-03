@@ -10,7 +10,7 @@
   dns.DoH = false;
 
   networking.useDHCP = false;
-  networking.hosts."10.2.1.1" = ["repo.ultr4.dev"];
+  networking.hosts."10.0.0.241" = ["repo.ultr4.dev"];
 
   wg.shitcloud = {
     enable = true;
